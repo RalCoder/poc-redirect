@@ -1,89 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>SecurityCentre Login - PoC</title>
-  <style>
-    body {
-      background: #f3f3f3;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .login-box {
-      background: white;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-      width: 320px;
-      text-align: center;
-    }
-    h2 {
-      margin-bottom: 20px;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      background: #0078d7;
-      color: white;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    button:hover {
-      background: #005ea6;
-    }
-    .note {
-      margin-top: 15px;
-      font-size: 12px;
-      color: red;
-    }
-    .token {
-      margin-top: 20px;
-      color: red;
-      font-weight: bold;
-      word-break: break-all;
-    }
-  </style>
+  <title>GitLab - Sign in</title>
 </head>
 <body>
-  <div class="login-box">
-    <h2>SecurityCentre Login</h2>
-    <form>
-      <input type="text" placeholder="Email" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Log In</button>
-    </form>
-    <p class="note">⚠️ This is a harmless PoC page for a security report. No data is collected.</p>
-
-    <div id="leaked-data" class="token"></div>
-  </div>
-
-  <script>
-    // Extract query params like ?token=XYZ&email=user@example.com
-    const params = new URLSearchParams(window.location.search);
-    let output = "";
-
-    if (params.has("token")) {
-      output += "⚠️ Captured Token: " + params.get("token") + "<br>";
-    }
-    if (params.has("email")) {
-      output += "📧 Email: " + decodeURIComponent(params.get("email")) + "<br>";
-    }
-
-    if (output) {
-      document.getElementById("leaked-data").innerHTML = output;
-    }
-  </script>
+  <h2>GitLab Sign In (PoC)</h2>
+  <form method="POST" action="/">
+    <input type="text" name="username" placeholder="Username" /><br><br>
+    <input type="password" name="password" placeholder="Password" /><br><br>
+    <button type="submit">Sign in</button>
+  </form>
+  <p><b>Note:</b> This is a harmless PoC, only logs locally.</p>
 </body>
 </html>
